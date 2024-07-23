@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - mek_stripe_terminal (3.5.0):
+    - Flutter
+    - StripeTerminal (~> 3.5.0)
+  - StripeTerminal (3.5.0)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - mek_stripe_terminal (from `.symlinks/plugins/mek_stripe_terminal/ios`)
+
+SPEC REPOS:
+  trunk:
+    - StripeTerminal
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  mek_stripe_terminal:
+    :path: ".symlinks/plugins/mek_stripe_terminal/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  mek_stripe_terminal: 09283ab948d9701349bff217ea8a979ba1b74385
+  StripeTerminal: 107cb1815738accbaa54179411cd916ed129b044
+
+PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+
+COCOAPODS: 1.14.3

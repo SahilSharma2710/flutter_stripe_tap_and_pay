@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.0"
+  class_to_string:
+    dependency: transitive
+    description:
+      name: class_to_string
+      sha256: bc66a0231ce9f96708d653b57269b6835058cf5ab8e34a8ef29cfa9dfb19b0a9
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   clock:
     dependency: transitive
     description:
@@ -115,6 +123,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.8.0"
+  mek_data_class:
+    dependency: transitive
+    description:
+      name: mek_data_class
+      sha256: "8c31dc171e96d8e69741b55b4c5b35a56c22a3cac5b94cb3c6c363aaaf71e685"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
+  mek_stripe_terminal:
+    dependency: "direct main"
+    description:
+      name: mek_stripe_terminal
+      sha256: ae2dcda9b5cfcc4fd946754da0e96220eebd1be12099d34f19bf219e3f24ed9d
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.5.0"
   meta:
     dependency: transitive
     description:
@@ -123,6 +147,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.12.0"
+  one_for_all:
+    dependency: transitive
+    description:
+      name: one_for_all
+      sha256: "70ab12bd4184c4b8aee1a1e7e0789d7855ad2de3bbe8bf9ed967c74ab803004f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -131,6 +163,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
