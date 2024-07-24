@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe_tap_and_pay/scan_reader.dart';
 
 Future<void> main() async {
   //Initialize Flutter Binding
@@ -16,11 +17,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+        appBar: AppBar(
+          title: const Text(
+            "Stripe Tap & Pay",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 24),
+          ),
+          backgroundColor: Colors.teal,
         ),
+        body: ScanPage(),
       ),
     );
   }
