@@ -22,7 +22,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Stripe Tap & Pay",
+            "Stripe Tap to Pay",
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.white, fontSize: 24),
           ),
