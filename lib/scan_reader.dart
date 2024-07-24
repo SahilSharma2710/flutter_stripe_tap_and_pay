@@ -193,6 +193,15 @@ class _ScanPageState extends State<ScanPage> {
   }
 
   @override
+  void dispose() {
+    unawaited(_onConnectionStatusChangeSub?.cancel());
+    unawaited(_discoverReaderSub?.cancel());
+    unawaited(_onUnexpectedReaderDisconnectSub?.cancel());
+    unawaited(_onPaymentStatusChangeSub?.cancel());
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
