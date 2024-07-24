@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mek_stripe_terminal/mek_stripe_terminal.dart';
+import 'package:rive/rive.dart';
 
 class PaymentPage extends StatefulWidget {
   final Terminal terminal;
@@ -12,7 +13,7 @@ class PaymentPage extends StatefulWidget {
 class _PaymentPageState extends State<PaymentPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _amountController = TextEditingController();
-
+  bool _isPaymentSuccessful = false;
   PaymentIntent? _paymentIntent;
 
   @override
@@ -72,9 +73,20 @@ class _PaymentPageState extends State<PaymentPage> {
   Future<void> _confirmPaymentIntent(
       Terminal terminal, PaymentIntent paymentIntent) async {
     try {
+      showSnackBar('Processing!');
+
       final processedPaymentIntent =
           await terminal.confirmPaymentIntent(paymentIntent);
       _paymentIntent = processedPaymentIntent;
+      // Show the animation for a while and then reset the state
+      Future.delayed(Duration(seconds: 3), () {
+        setState(() {
+          _isPaymentSuccessful = false;
+        });
+      });
+      setState(() {
+        _isPaymentSuccessful = true;
+      });
       showSnackBar('Payment processed!');
     } catch (e) {
       showSnackBar('Inside collect payment exception ${e.toString()}');
@@ -117,41 +129,49 @@ class _PaymentPageState extends State<PaymentPage> {
         backgroundColor: Colors.teal,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 100,
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 100,
+                  ),
+                  TextFormField(
+                    controller: _amountController,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter Amount',
+                      border: OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an amount';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 40),
+                  ElevatedButton(
+                    onPressed: _collectPayment,
+                    child: const Text('Collect Payment'),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.teal,
+                    ),
+                  ),
+                ],
               ),
-              TextFormField(
-                controller: _amountController,
-                decoration: InputDecoration(
-                  labelText: 'Enter Amount',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter an amount';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: _collectPayment,
-                child: Text('Collect Payment'),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.teal,
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+          if (_isPaymentSuccessful)
+            RiveAnimation.asset(
+              'assets/animations/success.riv',
+            ),
+        ],
       ),
     );
   }

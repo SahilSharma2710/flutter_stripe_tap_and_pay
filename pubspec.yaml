@@ -13,6 +13,7 @@ dependencies:
   mek_stripe_terminal: ^3.7.0
   permission_handler: ^11.3.1
   flutter_dotenv: ^5.1.0
+  rive: ^0.13.4
 
 
 dev_dependencies:
@@ -24,3 +25,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/.env
+    - assets/animations/
